@@ -1,4 +1,6 @@
+using FluentValidation.AspNetCore;
 using Serilog;
+using TaxiDispatcher.Application.Queries.Taxi;
 using TaxiDispatcher.WebApi.Initialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +16,15 @@ ConfigurationManager configuration = builder.Configuration;
 Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
+
+
 builder.Services.Initialize(configuration);
+// Fluent validation
+builder.Services.AddFluentValidation(fv =>
+{
+    fv.RegisterValidatorsFromAssemblyContaining<GetTaxiByIdQueryValidator>();
+    fv.ImplicitlyValidateRootCollectionElements = true;
+});
 
 var app = builder.Build();
 

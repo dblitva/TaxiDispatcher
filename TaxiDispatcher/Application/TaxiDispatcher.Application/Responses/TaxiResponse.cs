@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaxiDispatcher.Repository.Model
+namespace TaxiDispatcher.Application.Responses
 {
-    public class Taxi
+    public class TaxiResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }

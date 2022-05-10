@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TaxiDispatcher.Repository.Model\TaxiDispatcher.Repository.Model.csproj" />
+  </ItemGroup>
+
 </Project>
