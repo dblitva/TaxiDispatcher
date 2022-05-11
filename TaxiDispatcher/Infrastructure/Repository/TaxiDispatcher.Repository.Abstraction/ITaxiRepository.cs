@@ -11,5 +11,7 @@ namespace TaxiDispatcher.Repository.Abstraction
     {
         List<Taxi> GetAll();
         Taxi GetById(string Id);
+
+        string Insert(Taxi taxi);
     }
 }

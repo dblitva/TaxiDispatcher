@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TaxiDispatcher.Application.Commands.Taxi;
 using TaxiDispatcher.Application.Queries.Taxi;
 
 namespace TaxiDispatcher.WebApi.Controllers
@@ -33,12 +34,12 @@ namespace TaxiDispatcher.WebApi.Controllers
             return Ok(result);
         }
 
-        //[HttpPost("insert")]
-        //[ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-        //public async Task<IActionResult> Insert([FromBody] ArhitectTestCreateOrUpdateCommand command)
-        //{
-        //    var result = await _mediator.Send(command);
-        //    return Ok(result);
-        //}
+        [HttpPost("insert")]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Insert([FromBody] TaxiInsertCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }

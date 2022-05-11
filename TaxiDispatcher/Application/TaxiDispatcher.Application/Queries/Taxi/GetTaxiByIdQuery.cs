@@ -18,7 +18,7 @@ namespace TaxiDispatcher.Application.Queries.Taxi
     {
         public GetTaxiByIdQueryValidator()
         {
-            RuleFor(x => x.Id).NotNull().MaximumLength(5).WithMessage("Maksimalan dozvoljen broj karaktera je 5!");
+            //RuleFor(x => x.Id).NotNull().MaximumLength(5).WithMessage("Maksimalan dozvoljen broj karaktera je 5!");
         }
     }
 }

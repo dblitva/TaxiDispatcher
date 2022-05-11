@@ -23,14 +23,14 @@ namespace TaxiDispatcher.InMemoryDatabase
             base.Add(taxi);
         }
 
-        public List<Taxi> GetByTaxiId(string taxiId)
+        public Taxi GetByTaxiId(string taxiId)
         {
             List<Taxi> taxi = new List<Taxi>();
             var success = taxiIdIndex.TryGetValue(taxiId, out var taxis);
 
             if (success)
             {
-                return taxis;
+                return taxis.FirstOrDefault();
             }
             else
             {
@@ -42,7 +42,7 @@ namespace TaxiDispatcher.InMemoryDatabase
                     () => taxi);
                 }
             }
-            return taxi;
+            return taxi.FirstOrDefault();
         }
     }
 }

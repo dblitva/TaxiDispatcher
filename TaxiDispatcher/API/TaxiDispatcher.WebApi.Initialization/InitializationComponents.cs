@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using TaxiDispatcher.Application.Handlers;
 using TaxiDispatcher.Application.Mappers.Taxi;
+using TaxiDispatcher.InMemoryDatabase;
 using TaxiDispatcher.Repository.Abstraction;
 using TaxiDispatcher.Repository.InMemoryDatabase;
 
@@ -14,6 +15,9 @@ namespace TaxiDispatcher.WebApi.Initialization
     {
         public static void Initialize(this IServiceCollection services, IConfiguration configuration)
         {
+            //Database
+            services.AddSingleton<InMemoryDatabaseContext>();
+
             // MediatR
             services.AddMediatR(typeof(OrderRideCommandHandler).GetTypeInfo().Assembly);
 
