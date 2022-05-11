@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TaxiDispatcher.Repository.Model
+﻿namespace TaxiDispatcher.Repository.Model
 {
     public class Taxi
     {
-        public int Id { get; set; }
+        public Taxi()
+        {
+            Company = new TaxiCompany();
+        }
+        public string Id { get; set; }
         public string Name { get; set; }
+        public TaxiCompany Company { get; set; }    
     }
 }

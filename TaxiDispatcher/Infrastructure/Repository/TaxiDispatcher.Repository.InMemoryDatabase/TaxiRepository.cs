@@ -14,14 +14,14 @@ namespace TaxiDispatcher.Repository.InMemoryDatabase
         {
             return new List<Taxi>
             {
-                new Taxi { Id = 1, Name = "Pera"},
-                new Taxi { Id = 1, Name = "Mika"}
+                new Taxi { Id = Guid.NewGuid().ToString(), Name = "Pera"},
+                new Taxi { Id = Guid.NewGuid().ToString(), Name = "Mika"}
             };
         }
 
         public Taxi GetById(int Id)
         {
-            return new Taxi { Id = 1, Name = "Pera" };
+            return new Taxi { Id = Guid.NewGuid().ToString(), Name = "Pera" };
         }
     }
 }

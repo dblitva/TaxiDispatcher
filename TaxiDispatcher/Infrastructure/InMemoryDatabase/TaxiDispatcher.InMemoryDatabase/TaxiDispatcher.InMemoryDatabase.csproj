@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\TaxiDispatcher.Common\TaxiDispatcher.Common.csproj" />
     <ProjectReference Include="..\..\Repository\TaxiDispatcher.Repository.Model\TaxiDispatcher.Repository.Model.csproj" />
   </ItemGroup>
 
