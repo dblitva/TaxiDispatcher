@@ -8,7 +8,7 @@ namespace TaxiDispatcher.Application.Responses
 {
     public class TaxiResponse
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 }

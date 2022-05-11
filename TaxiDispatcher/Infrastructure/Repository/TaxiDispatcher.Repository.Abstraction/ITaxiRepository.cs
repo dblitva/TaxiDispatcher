@@ -10,6 +10,6 @@ namespace TaxiDispatcher.Repository.Abstraction
     public interface ITaxiRepository
     {
         List<Taxi> GetAll();
-        Taxi GetById(int Id);
+        Taxi GetById(string Id);
     }
 }

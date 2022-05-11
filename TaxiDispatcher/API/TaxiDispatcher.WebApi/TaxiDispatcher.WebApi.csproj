@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\TaxiDispatcher.Application\TaxiDispatcher.Application.csproj" />
     <ProjectReference Include="..\TaxiDispatcher.WebApi.Initialization\TaxiDispatcher.WebApi.Initialization.csproj" />
   </ItemGroup>
 

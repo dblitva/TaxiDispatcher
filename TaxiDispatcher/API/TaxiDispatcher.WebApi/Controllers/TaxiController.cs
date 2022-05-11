@@ -24,12 +24,21 @@ namespace TaxiDispatcher.WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet("getById/{id}")]
+        [HttpGet("getById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById(int id)
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetById([FromQuery] GetTaxiByIdQuery query)
         {
-            var result = await _mediator.Send(new GetTaxiByIdQuery { Id = id });
+            var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+        //[HttpPost("insert")]
+        //[ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        //public async Task<IActionResult> Insert([FromBody] ArhitectTestCreateOrUpdateCommand command)
+        //{
+        //    var result = await _mediator.Send(command);
+        //    return Ok(result);
+        //}
     }
 }

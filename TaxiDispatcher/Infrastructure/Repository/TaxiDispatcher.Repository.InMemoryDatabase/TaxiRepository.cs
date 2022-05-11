@@ -19,7 +19,7 @@ namespace TaxiDispatcher.Repository.InMemoryDatabase
             };
         }
 
-        public Taxi GetById(int Id)
+        public Taxi GetById(string Id)
         {
             return new Taxi { Id = Guid.NewGuid().ToString(), Name = "Pera" };
         }
