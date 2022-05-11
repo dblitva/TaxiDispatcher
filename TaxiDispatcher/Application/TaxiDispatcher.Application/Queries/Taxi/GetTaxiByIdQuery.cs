@@ -12,7 +12,6 @@ namespace TaxiDispatcher.Application.Queries.Taxi
     public class GetTaxiByIdQuery : IRequest<TaxiResponse>
     {
         public string Id { get; set; }
-        public int? Pera { get; set; }
     }
 
     public class GetTaxiByIdQueryValidator : AbstractValidator<GetTaxiByIdQuery>
@@ -20,7 +19,6 @@ namespace TaxiDispatcher.Application.Queries.Taxi
         public GetTaxiByIdQueryValidator()
         {
             RuleFor(x => x.Id).NotNull().MaximumLength(5).WithMessage("Maksimalan dozvoljen broj karaktera je 5!");
-            RuleFor(x => x.Pera).NotNull().LessThan(5).WithMessage("JBG");
         }
     }
 }
