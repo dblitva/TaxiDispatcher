@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using TaxiDispatcher.Application.Handlers.Ride;
+using TaxiDispatcher.Application.Mappers.Ride;
 using TaxiDispatcher.Application.Mappers.Taxi;
 using TaxiDispatcher.DataInitialization;
 using TaxiDispatcher.InMemoryDatabase;
@@ -25,11 +26,13 @@ namespace TaxiDispatcher.WebApi.Initialization
             //Repositories
             services.AddSingleton<ITaxiRepository, TaxiRepository>();
             services.AddSingleton<ITaxiCompanyRepository, TaxiCompanyRepository>();
+            services.AddSingleton<IRideRepository, RideRepository>();
 
             //AutoMapper
             MapperConfiguration mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new TaxiMappingProfile());
+                mc.AddProfile(new RideMappingProfile());
             });
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);

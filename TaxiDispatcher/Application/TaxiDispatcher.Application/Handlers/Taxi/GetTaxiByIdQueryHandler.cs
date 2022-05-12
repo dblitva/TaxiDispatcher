@@ -15,8 +15,8 @@ namespace TaxiDispatcher.Application.Handlers.Taxi
     public class GetTaxiByIdQueryHandler : IRequestHandler<GetTaxiByIdQuery, TaxiResponse>
     {
         private readonly IMapper _mapper;
-        public readonly ITaxiRepository _taxiRepository;
-        public readonly ILogger<GetTaxiByIdQueryHandler> _logger;
+        private readonly ITaxiRepository _taxiRepository;
+        private readonly ILogger<GetTaxiByIdQueryHandler> _logger;
         public GetTaxiByIdQueryHandler(ITaxiRepository taxiRepository, IMapper mapper, ILogger<GetTaxiByIdQueryHandler> logger)
         {
             _taxiRepository = taxiRepository;

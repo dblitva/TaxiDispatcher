@@ -1,9 +1,6 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaxiDispatcher.Application.Commands.Ride;
-using TaxiDispatcher.Application.Commands.Taxi;
-using TaxiDispatcher.Application.Queries.Taxi;
 
 namespace TaxiDispatcher.WebApi.Controllers
 {
@@ -21,6 +18,14 @@ namespace TaxiDispatcher.WebApi.Controllers
         [HttpPost("OrderRide")]
         [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> OrderRide([FromBody] OrderRideCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpPost("AcceptRide")]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> AcceptRide([FromBody] AcceptRideCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);

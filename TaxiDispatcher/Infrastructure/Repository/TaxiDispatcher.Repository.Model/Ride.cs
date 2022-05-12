@@ -11,5 +11,6 @@
         public int LocationTo { get; set; }
         public Taxi Taxi { get; set; }
         public int Price { get; set; }
+        public int State { get; set; }
     }
 }

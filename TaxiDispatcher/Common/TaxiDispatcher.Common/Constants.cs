@@ -13,6 +13,11 @@
             public const int Evening = 22;
             public const int Morning = 6;
         }
-        
+
+        public static class RideStates
+        {
+            public const int Ordered = 0;
+            public const int Accepted = 1;
+        }
     }
 }

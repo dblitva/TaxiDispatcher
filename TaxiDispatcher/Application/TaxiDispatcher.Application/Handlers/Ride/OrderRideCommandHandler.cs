@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using TaxiDispatcher.Application.Commands.Ride;
 using TaxiDispatcher.Application.Responses.Ride;
 using TaxiDispatcher.Common;
@@ -8,25 +9,33 @@ namespace TaxiDispatcher.Application.Handlers.Ride
 {
     public class OrderRideCommandHandler : IRequestHandler<OrderRideCommand, RideResponse>
     {
-        public readonly ITaxiRepository _taxiRepository;
-        public OrderRideCommandHandler(ITaxiRepository taxiRepository)
+        private readonly IMapper _mapper;
+        private readonly ITaxiRepository _taxiRepository;
+        private readonly IRideRepository _rideRepository;
+        public OrderRideCommandHandler(IMapper mapper, ITaxiRepository taxiRepository, IRideRepository rideRepository)
         {
+            _mapper = mapper;
             _taxiRepository = taxiRepository;
+            _rideRepository = rideRepository;
         }
         public async Task<RideResponse> Handle(OrderRideCommand request, CancellationToken cancellationToken)
         {
             var bestTaxi = await FindBestTaxi(request);
             var price = await CalculatePraice(request, bestTaxi);
 
-            var rideResponse = new RideResponse
+            Repository.Model.Ride ride = new Repository.Model.Ride
             {
                 Id = Guid.NewGuid().ToString(),
                 LocationFrom = request.LocationFrom,
                 LocationTo = request.LocationTo,
-                TaxiDriverId = bestTaxi.Id,
-                TaxiDriverName = bestTaxi.Name,
-                Price = price
+                Taxi = bestTaxi,
+                Price = price,
+                State = Constants.RideStates.Ordered
             };
+
+            _rideRepository.Insert(ride);
+
+            var rideResponse = _mapper.Map<RideResponse>(ride);
 
             return rideResponse;
         }

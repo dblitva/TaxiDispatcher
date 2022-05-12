@@ -23,14 +23,14 @@ namespace TaxiDispatcher.InMemoryDatabase
             base.Add(ride);
         }
 
-        public List<Ride> GetByRideId(string rideId)
+        public Ride GetByRideId(string rideId)
         {
             List<Ride> ride = new List<Ride>();
             var success = rideIdIndex.TryGetValue(rideId, out var rides);
 
             if (success)
             {
-                return rides;
+                return rides.FirstOrDefault();
             }
             else
             {
@@ -42,7 +42,7 @@ namespace TaxiDispatcher.InMemoryDatabase
                     () => ride);
                 }
             }
-            return ride;
+            return ride.FirstOrDefault();
         }
     }
 }
