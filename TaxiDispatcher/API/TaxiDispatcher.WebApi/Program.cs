@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using Serilog;
 using System.Reflection;
 using TaxiDispatcher.Application.Queries.Taxi;
+using TaxiDispatcher.DataInitialization;
 using TaxiDispatcher.WebApi.Initialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,6 +38,7 @@ builder.Services.AddFluentValidation(fv =>
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -49,4 +51,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 Log.Information("TaxiDispatcher.WebApi Starting Up! {Environment}", Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development");
+app.Services.GetService<IInitializationDatabase>().InitData();
 app.Run();
+

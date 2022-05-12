@@ -5,10 +5,12 @@
         public InMemoryDatabaseContext()
         {
             Rides = new RideList();
-            Taxies = new TaxiList();
+            Taxis = new TaxiList();
+            TaxiCompanies = new TaxiCompanyList();
         }
 
         public RideList Rides { get; set; }
-        public TaxiList Taxies{ get; set; }
+        public TaxiList Taxis{ get; set; }
+        public TaxiCompanyList TaxiCompanies{ get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace TaxiDispatcher.Application.Handlers.Taxi
         }
         public async Task<string> Handle(TaxiInsertCommand request, CancellationToken cancellationToken)
         {
-            var taxi = new Repository.Model.Taxi { Id = Guid.NewGuid().ToString(), Name = request.Name};
+            var taxi = new Repository.Model.Taxi { Id = Guid.NewGuid().ToString(), Name = request.Name, Location = request.Location };
             return _taxiRepository.Insert(taxi);            
         }
     }

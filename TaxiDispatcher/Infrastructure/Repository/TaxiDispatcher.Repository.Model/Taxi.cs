@@ -8,6 +8,7 @@
         }
         public string Id { get; set; }
         public string Name { get; set; }
+        public int Location { get; set; }
         public TaxiCompany Company { get; set; }    
     }
 }

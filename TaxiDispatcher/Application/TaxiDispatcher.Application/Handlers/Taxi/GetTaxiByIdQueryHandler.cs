@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaxiDispatcher.Application.Queries.Taxi;
-using TaxiDispatcher.Application.Responses;
+using TaxiDispatcher.Application.Responses.Taxi;
 using TaxiDispatcher.Repository.Abstraction;
 
 namespace TaxiDispatcher.Application.Handlers.Taxi

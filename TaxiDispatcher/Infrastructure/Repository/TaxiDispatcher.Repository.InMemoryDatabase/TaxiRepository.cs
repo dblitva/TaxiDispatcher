@@ -18,21 +18,17 @@ namespace TaxiDispatcher.Repository.InMemoryDatabase
         }
         public List<Taxi> GetAll()
         {
-            return new List<Taxi>
-            {
-                new Taxi { Id = Guid.NewGuid().ToString(), Name = "Pera"},
-                new Taxi { Id = Guid.NewGuid().ToString(), Name = "Mika"}
-            };
+            return _inMemoryDatabaseContext.Taxis;
         }
 
         public Taxi GetById(string Id)
         {
-            return _inMemoryDatabaseContext.Taxies.GetByTaxiId(Id);
+            return _inMemoryDatabaseContext.Taxis.GetByTaxiId(Id);
         }
 
         public string Insert(Taxi taxi)
         {
-            _inMemoryDatabaseContext.Taxies.Add(taxi);
+            _inMemoryDatabaseContext.Taxis.Add(taxi);
             return taxi.Id;
         }
     }
