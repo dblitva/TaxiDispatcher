@@ -57,7 +57,12 @@ namespace TaxiDispatcher.Application.Handlers.Ride
         {
             var price = taxi.Company.Rate * Math.Abs(request.LocationFrom - request.LocationTo);
 
-            if (request.RideType == Constants.InterCity)
+            if (request.RideType == Constants.RideTypes.InterCity)
+            {
+                price *= 2;
+            }
+
+            if (request.Time.Hour < Constants.NightHours.Morning || request.Time.Hour > Constants.NightHours.Evening)
             {
                 price *= 2;
             }
