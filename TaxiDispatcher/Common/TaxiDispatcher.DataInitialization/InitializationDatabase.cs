@@ -26,9 +26,9 @@ namespace TaxiDispatcher.DataInitialization
 
         private void InitTaxiCompanyData()
         {
-            Repository.Model.TaxiCompany taxiCompany1 = new Repository.Model.TaxiCompany { Id = Guid.NewGuid().ToString(), Name = "Naxi" };
-            Repository.Model.TaxiCompany taxiCompany2 = new Repository.Model.TaxiCompany { Id = Guid.NewGuid().ToString(), Name = "Alfa" };
-            Repository.Model.TaxiCompany taxiCompany3 = new Repository.Model.TaxiCompany { Id = Guid.NewGuid().ToString(), Name = "Gold" };
+            Repository.Model.TaxiCompany taxiCompany1 = new Repository.Model.TaxiCompany { Id = Guid.NewGuid().ToString(), Name = "Naxi", Rate = 10 };
+            Repository.Model.TaxiCompany taxiCompany2 = new Repository.Model.TaxiCompany { Id = Guid.NewGuid().ToString(), Name = "Alfa", Rate = 15 };
+            Repository.Model.TaxiCompany taxiCompany3 = new Repository.Model.TaxiCompany { Id = Guid.NewGuid().ToString(), Name = "Gold", Rate = 13 };
 
             _taxiCompanyRepository.Insert(taxiCompany1);
             _taxiCompanyRepository.Insert(taxiCompany2);

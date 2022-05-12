@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\TaxiDispatcher.Common\TaxiDispatcher.Common.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Repository\TaxiDispatcher.Repository.Abstraction\TaxiDispatcher.Repository.Abstraction.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Repository\TaxiDispatcher.Repository.Model\TaxiDispatcher.Repository.Model.csproj" />
   </ItemGroup>
