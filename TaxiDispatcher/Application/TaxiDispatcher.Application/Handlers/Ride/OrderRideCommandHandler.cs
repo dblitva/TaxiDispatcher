@@ -30,6 +30,7 @@ namespace TaxiDispatcher.Application.Handlers.Ride
                 LocationTo = request.LocationTo,
                 Taxi = bestTaxi,
                 Price = price,
+                Time = request.Time,
                 State = Constants.RideStates.Ordered
             };
 

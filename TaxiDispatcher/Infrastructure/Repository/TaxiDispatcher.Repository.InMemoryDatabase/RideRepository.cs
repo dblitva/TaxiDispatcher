@@ -27,5 +27,10 @@ namespace TaxiDispatcher.Repository.InMemoryDatabase
             _inMemoryDatabaseContext.Rides.Add(ride);
             return ride.Id;
         }
+
+        public List<Ride> GetRidesByDay(DateTime date)
+        {
+            return _inMemoryDatabaseContext.Rides.Where(ride => ride.Time.Date == date.Date).ToList();
+        }
     }
 }
