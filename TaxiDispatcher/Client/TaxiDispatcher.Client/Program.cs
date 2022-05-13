@@ -60,25 +60,24 @@ namespace TaxiDispatcher.Client
         static void Main(string[] args)
         {
             var builder = new ConfigurationBuilder();
-            //BuildConfig(builder);
+            BuildConfig(builder);
 
-            //Log.Logger = new LoggerConfiguration()
-            //    .ReadFrom.Configuration(builder.Build())
-            //    .CreateLogger();
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(builder.Build())
+                .CreateLogger();
 
-            //Log.Logger.Information("Application Starting");
+            Log.Logger.Information("Application Starting");
 
             var host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    //services.AddTransient<ITestingService, TestingService>();
-                    //services.AddSingleton<IHttpClientFactory, HttpClientFactory>();
+                    services.AddTransient<RestService>();
                 })
                 .UseSerilog()
                 .Build();
 
             var svc = ActivatorUtilities.CreateInstance<TaxiDispatcherClient>(host.Services);
-            svc.Run().Wait();
+            svc.Run(host.Services).Wait();
         }
 
         static void BuildConfig(IConfigurationBuilder builder)
@@ -88,18 +87,5 @@ namespace TaxiDispatcher.Client
                 .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "PROD"}.json", optional: true)
                 .AddEnvironmentVariables();
         }
-
-        //private async static Task<OrderRideResponse> OrderRide(OrderRideRequest orderRideRequest)
-        //{
-        //    OrderRideResponse orderRideResponse = null;
-        //    var url = new Uri($"{_path}api/ride/orderride");
-        //    var stringContent = new StringContent(JsonConvert.SerializeObject(orderRideRequest), Encoding.UTF8, "application/json");
-        //    HttpResponseMessage response = await _httpClient.PostAsyn(url, stringContent);
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        orderRideResponse = await response.Content.ReadFromJsonAsync<OrderRideResponse>();
-        //    }
-        //    return orderRideResponse;
-        //}
     }
 }
