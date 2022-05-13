@@ -1,6 +1,4 @@
-﻿using MediatR;
-using TaxiDispatcher.Application.Commands.Taxi;
-using TaxiDispatcher.Repository.Abstraction;
+﻿using TaxiDispatcher.Repository.Abstraction;
 
 namespace TaxiDispatcher.DataInitialization
 {

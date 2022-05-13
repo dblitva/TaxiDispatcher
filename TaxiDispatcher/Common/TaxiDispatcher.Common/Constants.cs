@@ -28,6 +28,12 @@
         public static class Messages
         {
             public const string TaxiNotAvailable = "There are no available taxi vehicles!";
+            public static class Validation
+            {
+                public const string LocationFrom = "LocationFrom must be greather than or equal 0!";
+                public const string LocationTo = "LocationTo must be greather than or equal 0!";
+                public const string RideType = "RideType must be 0 or 1!";
+            }
         }
     }
 }

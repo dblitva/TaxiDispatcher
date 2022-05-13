@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Net.Http.Json;
+﻿using Newtonsoft.Json;
 using System.Text;
 using TaxiDispatcher.Client.Model.Request;
 using TaxiDispatcher.Client.Model.Response;

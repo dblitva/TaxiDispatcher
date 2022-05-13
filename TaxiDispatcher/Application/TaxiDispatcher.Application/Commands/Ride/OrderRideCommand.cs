@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using TaxiDispatcher.Application.Responses.Ride;
+using TaxiDispatcher.Common;
 
 namespace TaxiDispatcher.Application.Commands.Ride
 {
@@ -17,10 +18,9 @@ namespace TaxiDispatcher.Application.Commands.Ride
         private readonly List<int> rideTypes = new List<int>() { 0, 1 };
         public OrderRideCommandValidator()
         {
-            RuleFor(x => x.LocationFrom).NotNull().GreaterThanOrEqualTo(0).WithMessage("LocationFrom must be greather than or equal 0!");
-            RuleFor(x => x.LocationTo).NotNull().GreaterThanOrEqualTo(0).WithMessage("LocationTo must be greather than or equal 0!");
-            RuleFor(x => x.RideType).NotNull().Must(y => rideTypes.Contains(y)).WithMessage("RideType must be 0 or 1!");
-           // RuleFor(x => x.Time).NotNull().GreaterThan(DateTime.Now);
+            RuleFor(x => x.LocationFrom).NotNull().GreaterThanOrEqualTo(0).WithMessage(Constants.Messages.Validation.LocationFrom);
+            RuleFor(x => x.LocationTo).NotNull().GreaterThanOrEqualTo(0).WithMessage(Constants.Messages.Validation.LocationTo);
+            RuleFor(x => x.RideType).NotNull().Must(y => rideTypes.Contains(y)).WithMessage(Constants.Messages.Validation.RideType);
         }
     }
 }

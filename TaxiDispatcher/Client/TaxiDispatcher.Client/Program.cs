@@ -1,14 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
 using Serilog;
-using System.Net.Http.Json;
-using System.Text;
-using TaxiDispatcher.Client.Model.Request;
-using TaxiDispatcher.Client.Model.Response;
 using TaxiDispatcher.Client.RestComunication;
-using TaxiDispatcher.Common;
 
 namespace TaxiDispatcher.Client
 {

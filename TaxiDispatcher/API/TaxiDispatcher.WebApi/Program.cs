@@ -2,8 +2,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
-using System.Reflection;
-using TaxiDispatcher.Application.Queries.Taxi;
+using TaxiDispatcher.Application.Commands.Ride;
 using TaxiDispatcher.Common;
 using TaxiDispatcher.DataInitialization;
 using TaxiDispatcher.WebApi.Initialization;
@@ -34,7 +33,7 @@ builder.Services.Initialize(configuration);
 // Fluent validation
 builder.Services.AddFluentValidation(fv =>
 {
-    fv.RegisterValidatorsFromAssemblyContaining<GetTaxiByIdQueryValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<OrderRideCommandValidator>();
     fv.ImplicitlyValidateRootCollectionElements = true;
 });
 
