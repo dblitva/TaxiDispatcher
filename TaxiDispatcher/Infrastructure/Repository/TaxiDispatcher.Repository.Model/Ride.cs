@@ -12,5 +12,6 @@
         public Taxi Taxi { get; set; }
         public int Price { get; set; }
         public int State { get; set; }
+        public DateTime Time { get; set; }  
     }
 }

@@ -21,4 +21,10 @@
     <ProjectReference Include="..\TaxiDispatcher.WebApi.Initialization\TaxiDispatcher.WebApi.Initialization.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Log\Init.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
