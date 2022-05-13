@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaxiDispatcher.Common;
 using TaxiDispatcher.InMemoryDatabase;
 using TaxiDispatcher.Repository.Abstraction;
 using TaxiDispatcher.Repository.Model;
@@ -28,9 +29,9 @@ namespace TaxiDispatcher.Repository.InMemoryDatabase
             return ride.Id;
         }
 
-        public List<Ride> GetRidesByDay(DateTime date)
+        public List<Ride> GetAcceptedRidesByDay(DateTime date)
         {
-            return _inMemoryDatabaseContext.Rides.Where(ride => ride.Time.Date == date.Date).ToList();
+            return _inMemoryDatabaseContext.Rides.Where(ride => ride.Time.Date == date.Date && ride.State == Constants.RideStates.Accepted).ToList();
         }
     }
 }

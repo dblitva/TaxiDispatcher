@@ -5,7 +5,7 @@ namespace TaxiDispatcher.Repository.Abstraction
     public interface IRideRepository
     {
         Ride GetById(string Id);
-        List<Ride> GetRidesByDay(DateTime date);
+        List<Ride> GetAcceptedRidesByDay(DateTime date);
         string Insert(Ride ride);
     }
 }

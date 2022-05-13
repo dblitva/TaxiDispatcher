@@ -31,6 +31,10 @@ namespace TaxiDispatcher.Client.RestComunication
             }
             else
             {
+                var dic = new Dictionary<string, string[]>();
+                var msg = new List<string> { "Server Error!" };
+                dic.Add("Fatal", msg.ToArray());
+               
                 return new ResponseWrapper<T>
                 {
                     IsBadResponse = true,
@@ -38,7 +42,7 @@ namespace TaxiDispatcher.Client.RestComunication
                     {
                         status = 500,
                         title = "Server Error!",
-                        errors = new Errors { LocationFrom = new List<string> { "Server Error!" } }
+                        errors = dic
                     }
                 };
             }

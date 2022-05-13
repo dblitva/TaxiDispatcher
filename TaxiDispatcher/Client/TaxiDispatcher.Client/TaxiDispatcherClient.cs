@@ -36,9 +36,20 @@ namespace TaxiDispatcher.Client
             var orderResponse = await OrderRide(locationFrom, locationTo, rideType, time);
             if (!orderResponse.IsBadResponse)
             {
-                Console.WriteLine("Ride ordered, price: " + orderResponse.Response.Price.ToString());
-                var ride4 = await _restService.AcceptRide(new AcceptRideRequest { RideId = orderResponse.Response.Id });
-                Console.WriteLine(ride4.Response);
+                if (orderResponse.Response.RideOrdered)
+                {
+                    Console.WriteLine("Ride ordered, price: " + orderResponse.Response.Ride.Price.ToString());
+                    var ride = await _restService.AcceptRide(new AcceptRideRequest { RideId = orderResponse.Response.Ride.Id });
+                    Console.WriteLine(ride.Response);
+                }
+                else
+                {
+                    Console.WriteLine(orderResponse.Response.OrderCancelationReason);
+                }
+            }
+            else
+            {
+                Console.WriteLine(orderResponse.ValidationResponse.ErrorsToString());
             }
         }
         public async Task<ResponseWrapper<OrderRideResponse>> OrderRide(int locationFrom, int locationTo, int rideType, DateTime time) 
@@ -70,7 +81,10 @@ namespace TaxiDispatcher.Client
                     Console.WriteLine(Environment.NewLine);
                 }
             }
-           
+            else
+            {
+                Console.WriteLine(drivers.ValidationResponse.ErrorsToString());
+            }
         }
     }
 }

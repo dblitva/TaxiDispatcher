@@ -21,24 +21,28 @@ namespace TaxiDispatcher.Application.Handlers.Ride
         public async Task<RideResponse> Handle(OrderRideCommand request, CancellationToken cancellationToken)
         {
             var bestTaxi = await FindBestTaxi(request);
-            var price = await CalculatePraice(request, bestTaxi);
-
-            Repository.Model.Ride ride = new Repository.Model.Ride
+            if (Math.Abs(request.LocationFrom - bestTaxi.Location) < Constants.TaxiAvailability.Distance)
             {
-                Id = Guid.NewGuid().ToString(),
-                LocationFrom = request.LocationFrom,
-                LocationTo = request.LocationTo,
-                Taxi = bestTaxi,
-                Price = price,
-                Time = request.Time,
-                State = Constants.RideStates.Ordered
-            };
+                var price = await CalculatePraice(request, bestTaxi);
 
-            _rideRepository.Insert(ride);
+                Repository.Model.Ride ride = new Repository.Model.Ride
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    LocationFrom = request.LocationFrom,
+                    LocationTo = request.LocationTo,
+                    Taxi = bestTaxi,
+                    Price = price,
+                    Time = request.Time,
+                    State = Constants.RideStates.Ordered
+                };
 
-            var rideResponse = _mapper.Map<RideResponse>(ride);
+                _rideRepository.Insert(ride);
 
-            return rideResponse;
+                var rideData = _mapper.Map<RideData>(ride);
+                return new RideResponse { RideOrdered = true, Ride = rideData };
+            }
+
+            return new RideResponse { RideOrdered = false, OrderCancelationReason = Constants.Messages.TaxiNotAvailable };
         }
 
         private async Task<Repository.Model.Taxi> FindBestTaxi(OrderRideCommand request)

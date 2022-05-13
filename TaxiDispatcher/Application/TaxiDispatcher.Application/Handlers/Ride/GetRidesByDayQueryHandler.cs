@@ -17,7 +17,7 @@ namespace TaxiDispatcher.Application.Handlers.Ride
         }
         public async Task<List<RidesByDriverResponse>> Handle(GetRidesByDayQuery request, CancellationToken cancellationToken)
         {
-            var rides = _rideRepository.GetRidesByDay(request.Date);
+            var rides = _rideRepository.GetAcceptedRidesByDay(request.Date);
 
             var ridesByDriverResponse = rides.GroupBy(
                 p => p.Taxi.Id,

@@ -1,8 +1,10 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
 using System.Reflection;
 using TaxiDispatcher.Application.Queries.Taxi;
+using TaxiDispatcher.Common;
 using TaxiDispatcher.DataInitialization;
 using TaxiDispatcher.WebApi.Initialization;
 
@@ -52,5 +54,26 @@ app.UseAuthorization();
 app.MapControllers();
 Log.Information("TaxiDispatcher.WebApi Starting Up! {Environment}", Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development");
 app.Services.GetService<IInitializationDatabase>().InitData();
+
+app.UseExceptionHandler(c => c.Run(async context =>
+{
+    var exception = context.Features
+        .Get<IExceptionHandlerPathFeature>()
+        .Error;
+
+    if (exception.GetType().FullName != "FluentValidation.ValidationException")
+    {
+        var response = new ValidationException(Enums.ErrorCode.ErrUnknown.ToString());
+        await context.Response.WriteAsJsonAsync(response);
+
+    }
+    else
+    {
+        var response = new ValidationException(exception.Message);
+        await context.Response.WriteAsJsonAsync(response);
+
+    }
+}));
+
 app.Run();
 

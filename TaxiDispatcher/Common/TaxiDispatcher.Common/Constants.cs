@@ -19,5 +19,15 @@
             public const int Ordered = 0;
             public const int Accepted = 1;
         }
+
+        public static class TaxiAvailability
+        {
+            public const int Distance = 15;
+        }
+
+        public static class Messages
+        {
+            public const string TaxiNotAvailable = "There are no available taxi vehicles!";
+        }
     }
 }

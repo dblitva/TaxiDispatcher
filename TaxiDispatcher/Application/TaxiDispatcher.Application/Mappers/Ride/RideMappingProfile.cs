@@ -7,7 +7,7 @@ namespace TaxiDispatcher.Application.Mappers.Ride
     {
         public RideMappingProfile()
         {
-            CreateMap<Repository.Model.Ride, RideResponse>()
+            CreateMap<Repository.Model.Ride, RideData>()
                 .ForMember(x=>x.TaxiDriverId, opt => opt.MapFrom(src => src.Taxi.Id))
                 .ForMember(x=>x.TaxiDriverName, opt => opt.MapFrom(src => src.Taxi.Name));
 
