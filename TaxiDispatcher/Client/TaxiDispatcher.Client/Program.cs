@@ -14,49 +14,6 @@ namespace TaxiDispatcher.Client
 {
     internal class Program
     {
-        static HttpClient _httpClient = new HttpClient();
-        static string _path = "http://localhost:5180/";
-        //static void Main(string[] args)
-        //{
-        //    var orderRideRequest1 = new OrderRideRequest
-        //    {
-        //        LocationFrom = 5,
-        //        LocationTo = 0,
-        //        RideType = Constants.RideTypes.City,
-        //        Time = new DateTime(2022, 1, 1, 23, 0, 0)
-        //    };
-        //    OrderRide(orderRideRequest1);
-
-        //    var orderRideRequest2 = new OrderRideRequest
-        //    {
-        //        LocationFrom = 0,
-        //        LocationTo = 12,
-        //        RideType = Constants.RideTypes.InterCity,
-        //        Time = new DateTime(2022, 1, 1, 9, 0, 0)
-        //    };
-        //    OrderRide(orderRideRequest2);
-
-        //    var orderRideRequest3 = new OrderRideRequest
-        //    {
-        //        LocationFrom = 5,
-        //        LocationTo = 0,
-        //        RideType = Constants.RideTypes.City,
-        //        Time = new DateTime(2022, 1, 1, 11, 0, 0)
-        //    };
-        //    OrderRide(orderRideRequest3);
-
-        //    var orderRideRequest4 = new OrderRideRequest
-        //    {
-        //        LocationFrom = 5,
-        //        LocationTo = 0,
-        //        RideType = Constants.RideTypes.City,
-        //        Time = new DateTime(2022, 1, 1, 11, 0, 0)
-        //    };
-        //    OrderRide(orderRideRequest4);
-
-
-        //}
-
         static void Main(string[] args)
         {
             var builder = new ConfigurationBuilder();

@@ -29,5 +29,18 @@ namespace TaxiDispatcher.Client.RestComunication
             }
             return orderRideResponse;
         }
+
+        public async Task<string> AcceptRide(AcceptRideRequest acceptRideRequest)
+        {
+            string orderRideResponse = null;
+            var url = new Uri($"{_path}api/ride/acceptride");
+            var stringContent = new StringContent(JsonConvert.SerializeObject(acceptRideRequest), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.PostAsync(url, stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                orderRideResponse = await response.Content.ReadFromJsonAsync<string>();
+            }
+            return orderRideResponse;
+        }
     }
 }

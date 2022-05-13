@@ -46,8 +46,8 @@ namespace TaxiDispatcher.Application.Handlers.Ride
             var taxis = _taxiRepository.GetAll();
             var orderdTaxisByLocation = taxis.OrderBy(x => Math.Abs(x.Location)).ToList();
 
-            var taxi1 = orderdTaxisByLocation.LastOrDefault(x => x.Location < request.LocationFrom);
-            var taxi2 = orderdTaxisByLocation.FirstOrDefault(x => x.Location > request.LocationFrom);
+            var taxi1 = orderdTaxisByLocation.LastOrDefault(x => x.Location <= request.LocationFrom);
+            var taxi2 = orderdTaxisByLocation.FirstOrDefault(x => x.Location >= request.LocationFrom);
 
             if (taxi1 == null)
             {

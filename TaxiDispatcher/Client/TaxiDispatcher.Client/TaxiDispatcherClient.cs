@@ -23,38 +23,42 @@ namespace TaxiDispatcher.Client
             var orderRideRequest1 = new OrderRideRequest
             {
                 LocationFrom = 5,
-                LocationTo = 33,
+                LocationTo = 0,
                 RideType = Constants.RideTypes.City,
                 Time = new DateTime(2022, 1, 1, 23, 0, 0)
             };
             var orderResponse1 = await restService.OrderRide(orderRideRequest1);
+            var ride1 = await restService.AcceptRide(new AcceptRideRequest { RideId = orderResponse1.Id });
 
             var orderRideRequest2 = new OrderRideRequest
             {
-                LocationFrom = 5,
-                LocationTo = 33,
+                LocationFrom = 0,
+                LocationTo = 12,
                 RideType = Constants.RideTypes.InterCity,
                 Time = new DateTime(2022, 1, 1, 9, 0, 0)
             };
             var orderResponse2 = await restService.OrderRide(orderRideRequest2);
+            var ride2 = await restService.AcceptRide(new AcceptRideRequest { RideId = orderResponse2.Id });
 
             var orderRideRequest3 = new OrderRideRequest
             {
                 LocationFrom = 5,
-                LocationTo = 33,
+                LocationTo = 0,
                 RideType = Constants.RideTypes.City,
                 Time = new DateTime(2022, 1, 1, 11, 0, 0)
             };
             var orderResponse3 = await restService.OrderRide(orderRideRequest3);
+            var ride3 = await restService.AcceptRide(new AcceptRideRequest { RideId = orderResponse3.Id });
 
             var orderRideRequest4 = new OrderRideRequest
             {
-                LocationFrom = 5,
-                LocationTo = 33,
+                LocationFrom = 35,
+                LocationTo = 12,
                 RideType = Constants.RideTypes.City,
                 Time = new DateTime(2022, 1, 1, 11, 0, 0)
             };
             var orderResponse4 = await restService.OrderRide(orderRideRequest4);
+            var ride4 = await restService.AcceptRide(new AcceptRideRequest { RideId = orderResponse4.Id });
 
         }
     }
