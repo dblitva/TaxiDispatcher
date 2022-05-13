@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mime;
 using TaxiDispatcher.Application.Commands.Ride;
 using TaxiDispatcher.Application.Queries.Ride;
 
@@ -7,6 +8,7 @@ namespace TaxiDispatcher.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces(MediaTypeNames.Application.Json)]
     public class RideController : ControllerBase
     {
         private readonly IMediator _mediator;
