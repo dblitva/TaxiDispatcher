@@ -31,6 +31,12 @@ namespace TaxiDispatcher.Client.RestComunication
             var stringContent = new StringContent(JsonConvert.SerializeObject(acceptRideRequest), Encoding.UTF8, "application/json");
             return await HttpClientWrapper<string>.PostData(url, stringContent);
         }
+
+        public async Task<ResponseWrapper<List<RidesByDriverResponse>>> GetRidesByDate(DateTime date)
+        {
+            var url = new Uri($"{_path}api/ride/getridesbyday?Date={date}");
+            return await HttpClientWrapper<List<RidesByDriverResponse>>.GetData(url);
+        }
     }
 
 

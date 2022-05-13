@@ -1,11 +1,11 @@
-﻿namespace TaxiDispatcher.Application.Responses.Ride
+﻿namespace TaxiDispatcher.Client.Model.Response
 {
     public class RidesByDriverResponse
     {
         public string DriverId { get; set; }
         public string DriverName { get; set; }
-        public int Total { get; set; }  
-        public List<Ride> Rides { get; set; }   
+        public int Total { get; set; }
+        public List<Ride> Rides { get; set; }
     }
 
     public class Ride

@@ -21,7 +21,7 @@ namespace TaxiDispatcher.Application.Handlers.Ride
 
             var ridesByDriverResponse = rides.GroupBy(
                 p => p.Taxi.Id,
-                (key, g) => new RidesByDriverResponse { DriverId = key, DriverName = g.FirstOrDefault().Taxi.Name, Rides = _mapper.Map<List<Responses.Ride.Ride>>(g.ToList()) })
+                (key, g) => new RidesByDriverResponse { DriverId = key, DriverName = g.FirstOrDefault().Taxi.Name, Total = g.Sum(s=>s.Price), Rides = _mapper.Map<List<Responses.Ride.Ride>>(g.ToList()) })
                 .ToList();
 
             return ridesByDriverResponse;

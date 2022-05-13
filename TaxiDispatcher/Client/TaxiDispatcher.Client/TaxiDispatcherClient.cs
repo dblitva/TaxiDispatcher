@@ -24,6 +24,9 @@ namespace TaxiDispatcher.Client
             Console.WriteLine(Environment.NewLine);            
             await RideProcessing(35, 12, Constants.RideTypes.City, new DateTime(2022, 1, 1, 11, 0, 0));
 
+            Console.WriteLine(Environment.NewLine);
+            await GetRideList();
+
             Console.ReadLine();
         }
 
@@ -49,6 +52,25 @@ namespace TaxiDispatcher.Client
             };
             
             return await _restService.OrderRide(orderRideRequest);
+        }
+
+        public async Task GetRideList()
+        {
+            var drivers = await _restService.GetRidesByDate(new DateTime(2022, 01, 01));
+            if(!drivers.IsBadResponse) 
+            {
+                foreach (var driver in drivers.Response)
+                {
+                    Console.WriteLine($"Driver {driver.DriverName} earned today:");
+                    foreach(var ride in driver.Rides)
+                    {
+                        Console.WriteLine($"Price: {ride.Price}");
+                    }
+                    Console.WriteLine($"Total: {driver.Total}");
+                    Console.WriteLine(Environment.NewLine);
+                }
+            }
+           
         }
     }
 }

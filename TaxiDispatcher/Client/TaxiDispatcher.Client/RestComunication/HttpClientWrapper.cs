@@ -9,6 +9,18 @@ namespace TaxiDispatcher.Client.RestComunication
         {
             HttpClient httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.PostAsync(url, stringContent);
+            return await ResponseProcessing(response);
+        }
+
+        public static async Task<ResponseWrapper<T>> GetData(Uri url)
+        {
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage response = await httpClient.GetAsync(url);
+            return await ResponseProcessing(response);
+        }
+
+        private static async Task<ResponseWrapper<T>> ResponseProcessing(HttpResponseMessage response)
+        {
             if (response.IsSuccessStatusCode)
             {
                 return new ResponseWrapper<T> { Response = await response.Content.ReadFromJsonAsync<T>(), IsBadResponse = false };
