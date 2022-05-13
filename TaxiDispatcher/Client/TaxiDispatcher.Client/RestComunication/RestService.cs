@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Text;
 using TaxiDispatcher.Client.Model.Request;
@@ -17,30 +18,20 @@ namespace TaxiDispatcher.Client.RestComunication
             _httpClient = new HttpClient();
         }
 
-        public async Task<OrderRideResponse> OrderRide(OrderRideRequest orderRideRequest)
+        public async Task<ResponseWrapper<OrderRideResponse>> OrderRide(OrderRideRequest orderRideRequest)
         {
-            OrderRideResponse orderRideResponse = null;
             var url = new Uri($"{_path}api/ride/orderride");
             var stringContent = new StringContent(JsonConvert.SerializeObject(orderRideRequest), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _httpClient.PostAsync(url, stringContent);
-            if (response.IsSuccessStatusCode)
-            {
-                orderRideResponse = await response.Content.ReadFromJsonAsync<OrderRideResponse>();
-            }
-            return orderRideResponse;
+            return await HttpClientWrapper<OrderRideResponse>.PostData(url, stringContent);
         }
 
-        public async Task<string> AcceptRide(AcceptRideRequest acceptRideRequest)
+        public async Task<ResponseWrapper<string>> AcceptRide(AcceptRideRequest acceptRideRequest)
         {
-            string orderRideResponse = null;
             var url = new Uri($"{_path}api/ride/acceptride");
             var stringContent = new StringContent(JsonConvert.SerializeObject(acceptRideRequest), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _httpClient.PostAsync(url, stringContent);
-            if (response.IsSuccessStatusCode)
-            {
-                orderRideResponse = await response.Content.ReadFromJsonAsync<string>();
-            }
-            return orderRideResponse;
+            return await HttpClientWrapper<string>.PostData(url, stringContent);
         }
     }
+
+
 }

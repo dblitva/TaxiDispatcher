@@ -28,7 +28,7 @@ namespace TaxiDispatcher.Client
             var host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    services.AddTransient<RestService>();
+                    services.AddTransient<RestService>();                    
                 })
                 .UseSerilog()
                 .Build();
