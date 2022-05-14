@@ -40,7 +40,7 @@ namespace TaxiDispatcher.Client
                 {
                     Console.WriteLine("Ride ordered, price: " + orderResponse.Response.Ride.Price.ToString());
                     var ride = await _restService.AcceptRide(new AcceptRideRequest { RideId = orderResponse.Response.Ride.Id });
-                    Console.WriteLine(ride.Response);
+                    Console.WriteLine(ride.Response.Message);
                 }
                 else
                 {
