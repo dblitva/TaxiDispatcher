@@ -21,20 +21,24 @@ namespace TaxiDispatcher.Tests.Unit.Integration
 
             // Act
             var orderRideRequest = new OrderRideRequest { LocationFrom = locationFrom, LocationTo = locationTo, RideType = rideType, Time = time };
-            var response = await OrderRide(orderRideRequest);
+            var orderResponse = await OrderRide(orderRideRequest);
+            if (!badResponse && ordered)
+            {
+                await AcceptRide(new AcceptRideRequest { RideId = orderResponse.Response.Ride.Id });
+            }
 
             // Assert
             if (badResponse)
             {
-                Assert.Equal(response.ValidationResponse.status, 400);
+                Assert.Equal(orderResponse.ValidationResponse.status, 400);
             }
             else if(ordered)
             {
-                Assert.Equal(response.Response.RideOrdered, ordered);
+                Assert.Equal(orderResponse.Response.RideOrdered, ordered);
             }
             else
             {
-                Assert.Equal(response.Response.OrderCancelationReason, Common.Constants.Messages.TaxiNotAvailable);
+                Assert.Equal(orderResponse.Response.OrderCancelationReason, Common.Constants.Messages.TaxiNotAvailable);
             }
         }
     }

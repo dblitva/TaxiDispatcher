@@ -30,11 +30,11 @@ namespace TaxiDispatcher.Tests.Unit.Integration
             return await HttpClientWrapper<OrderRideResponse>.PostData(_httpClient, url, stringContent);
         }
 
-        public async Task<ResponseWrapper<string>> AcceptRide(AcceptRideRequest acceptRideRequest)
+        public async Task<ResponseWrapper<AcceptRideResponse>> AcceptRide(AcceptRideRequest acceptRideRequest)
         {
             var url = new Uri($"{_path}api/ride/acceptride");
             var stringContent = new StringContent(JsonConvert.SerializeObject(acceptRideRequest), Encoding.UTF8, "application/json");
-            return await HttpClientWrapper<string>.PostData(_httpClient, url, stringContent);
+            return await HttpClientWrapper<AcceptRideResponse>.PostData(_httpClient, url, stringContent);
         }
 
         public async Task<ResponseWrapper<List<RidesByDriverResponse>>> GetRidesByDate(DateTime date)
