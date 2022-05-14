@@ -5,7 +5,7 @@ using TaxiDispatcher.Client.Helper;
 using TaxiDispatcher.Client.Model.Request;
 using TaxiDispatcher.Client.Model.Response;
 
-namespace TaxiDispatcher.Tests.Unit.Integration
+namespace TaxiDispatcher.Tests.Integration
 {
     public class BaseTestsSetup
     {

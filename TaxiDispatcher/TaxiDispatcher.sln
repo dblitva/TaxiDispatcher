@@ -39,13 +39,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Client", "Cl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Test", "6.Test", "{B7EC7E09-21D1-4A53-A2B6-9FA7AB966E15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Tests.Unit.Repository", "Test\TaxiDispatcher.Tests.Unit.Repository\TaxiDispatcher.Tests.Unit.Repository.csproj", "{5293F10A-373C-45A8-A202-9C3233D34AB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Tests.Unit.Repository", "Test\TaxiDispatcher.Tests.Unit.Repository\TaxiDispatcher.Tests.Unit.Repository.csproj", "{5293F10A-373C-45A8-A202-9C3233D34AB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Tests.Unit.Integration", "Test\TaxiDispatcher.Tests.Unit.Integration\TaxiDispatcher.Tests.Unit.Integration.csproj", "{126E626E-D7CC-42CD-8909-EC8484D77C96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Tests.Integration", "Test\TaxiDispatcher.Tests.Unit.Integration\TaxiDispatcher.Tests.Integration.csproj", "{126E626E-D7CC-42CD-8909-EC8484D77C96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Client.Model", "Client\TaxiDispatcher.Client.Model\TaxiDispatcher.Client.Model.csproj", "{EC218EC0-E82F-4947-9978-DBEC9C8A5FDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Client.Model", "Client\TaxiDispatcher.Client.Model\TaxiDispatcher.Client.Model.csproj", "{EC218EC0-E82F-4947-9978-DBEC9C8A5FDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Client.Helper", "Client\TaxiDispatcher.Client.Helper\TaxiDispatcher.Client.Helper.csproj", "{249BB16F-923B-424F-AF4C-EA20951B208C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Client.Helper", "Client\TaxiDispatcher.Client.Helper\TaxiDispatcher.Client.Helper.csproj", "{249BB16F-923B-424F-AF4C-EA20951B208C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿using TaxiDispatcher.Client.Model.Request;
 using Xunit;
 
-namespace TaxiDispatcher.Tests.Unit.Integration
+namespace TaxiDispatcher.Tests.Integration
 {
     public class IntegrationTests : BaseTestsSetup
     {
