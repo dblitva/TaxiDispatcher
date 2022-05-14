@@ -6,54 +6,51 @@ using Xunit;
 
 namespace TaxiDispatcher.Tests.Unit.Repository
 {
-    public class TaxiRepositoryTests
+    public class TaxiCompanyRepositoryTests
     {
         [Fact]
-        public void TaxiRepository_GetAll()
+        public void TaxiRepository_GetByName()
         {
             using (var mock = AutoMock.GetLoose())
             {
                 // Arrange
-                Taxi taxi = new Taxi { Id = Guid.NewGuid().ToString(), Name = "Predrag", Location = 50 };
-                Taxi taxi1 = new Taxi { Id = Guid.NewGuid().ToString(), Name = "Nenad", Location = 60 };
+                TaxiCompany taxiCompany = new TaxiCompany { Name = "Gold", Rate = 25 };
 
                 mock.Mock<InMemoryDatabaseContext>();
                 var context = mock.Mock<InMemoryDatabaseContext>().Object;
-                context.Taxis.Add(taxi);
-                context.Taxis.Add(taxi1);
-                
-                var taxiRepository = mock.Create<TaxiRepository>();
+                context.TaxiCompanies.Add(taxiCompany);
+
+                var taxiCompanyRepository = mock.Create<TaxiCompanyRepository>();
 
                 //Act
-                var taxis = taxiRepository.GetAll();
+                var actual = taxiCompanyRepository.GetByName(taxiCompany.Name);
 
                 //Assert
-                Assert.NotEmpty(taxis);
+                Assert.Equal(context.TaxiCompanies.First().Name, actual.Name);
 
             }
         }
 
         [Fact]
-        public void TaxiRepository_Insert()
+        public void TaxiCompanyRepository_Insert()
         {
             using (var mock = AutoMock.GetLoose())
             {
                 // Arrange
-                Taxi taxi = new Taxi { Name = "Predrag", Location = 50 };
+                TaxiCompany taxiCompany = new TaxiCompany { Name = "Gold", Rate = 25 };
 
                 mock.Mock<InMemoryDatabaseContext>();
                 var context = mock.Mock<InMemoryDatabaseContext>().Object;
 
-                var taxiRepository = mock.Create<TaxiRepository>();
+                var taxiCompanyRepository = mock.Create<TaxiCompanyRepository>();
 
                 //Act
-                taxiRepository.Insert(taxi);
+                taxiCompanyRepository.Insert(taxiCompany);
 
                 //Assert
-                Assert.Single(context.Taxis);
+                Assert.Single(context.TaxiCompanies);
 
             }
         }
-
     }
 }
