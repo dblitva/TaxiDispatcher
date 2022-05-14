@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\API\TaxiDispatcher.WebApi\TaxiDispatcher.WebApi.csproj" />
+    <ProjectReference Include="..\..\Client\TaxiDispatcher.Client.Helper\TaxiDispatcher.Client.Helper.csproj" />
     <ProjectReference Include="..\..\Client\TaxiDispatcher.Client.Model\TaxiDispatcher.Client.Model.csproj" />
   </ItemGroup>
 </Project>

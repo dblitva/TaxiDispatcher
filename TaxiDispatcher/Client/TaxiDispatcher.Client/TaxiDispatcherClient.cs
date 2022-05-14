@@ -19,7 +19,7 @@ namespace TaxiDispatcher.Client
             await RideProcessing(0, 12, Constants.RideTypes.City, new DateTime(2022, 1, 1, 9, 0, 0));
 
             Console.WriteLine(Environment.NewLine);           
-            await RideProcessing(5, 0, Constants.RideTypes.City, new DateTime(2022, 1, 1, 11, 0, 0));
+            await RideProcessing(5, 0, Constants.RideTypes.InterCity, new DateTime(2022, 1, 1, 11, 0, 0));
 
             Console.WriteLine(Environment.NewLine);            
             await RideProcessing(35, 12, Constants.RideTypes.City, new DateTime(2022, 1, 1, 11, 0, 0));
