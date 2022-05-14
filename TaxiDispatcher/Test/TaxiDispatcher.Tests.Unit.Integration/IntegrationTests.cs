@@ -20,8 +20,8 @@ namespace TaxiDispatcher.Tests.Unit.Integration
         public static readonly object[][] GetRideListData =
         {
             new object[] { new DateTime(2022, 1, 1), 1, 3 },
-            new object[] { new DateTime(2022, 1, 2), 1, 2},
-            new object[] { new DateTime(2022, 1, 3), 0, 0}
+            new object[] { new DateTime(2022, 1, 2), 1, 2 },
+            new object[] { new DateTime(2022, 1, 3), 0, 0 }
         };
 
         [Theory, MemberData(nameof(OrderRideData))]
@@ -66,7 +66,7 @@ namespace TaxiDispatcher.Tests.Unit.Integration
                 {
                     await AcceptRide(new AcceptRideRequest { RideId = orderResponse.Response.Ride.Id });
                 }
-            }           
+            }
             var drivers = await GetRidesByDate(forDate);
 
             Assert.Equal(drivers.Response.Count(), driverCount);
