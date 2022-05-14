@@ -12,11 +12,12 @@ This is a code refactor tech challenge created by the one company. A REST servic
 ## Start
 
 ### Visual Studio 2019
-- In Microsoft Visual Studio 2022 right click on TaxiDispatcher.WebApi and select Debug --> Stat new Instance.
-- In Microsoft Visual Studio 2022 right click on TaxiDispatcher.Client and select Debug --> Stat new Instance.
+- In Microsoft Visual Studio 2022 right click on **TaxiDispatcher.WebApi** and select **Debug --> Stat new Instance**.
+- In Microsoft Visual Studio 2022 right click on **TaxiDispatcher.Client** and select **Debug --> Stat new Instance**.
 
 ### PowerShell
-
+- In folder PS_run right click on **start-taxidispatcher-api** and select **Run with PowerShell**
+- In folder PS_run right click on **start-taxidispatcher-client** and select **Run with PowerShell**
 
 ## Tests
 

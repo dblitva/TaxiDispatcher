@@ -13,6 +13,7 @@ namespace TaxiDispatcher.Client
         {
             _restService = ActivatorUtilities.GetServiceOrCreateInstance<RestService>(services);
 
+            Console.WriteLine(Environment.NewLine);
             await RideProcessing(5, 0, Constants.RideTypes.City, new DateTime(2022, 1, 1, 23, 0, 0));
 
             Console.WriteLine(Environment.NewLine);           
