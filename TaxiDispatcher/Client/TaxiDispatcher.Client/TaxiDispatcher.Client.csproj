@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\TaxiDispatcher.Common\TaxiDispatcher.Common.csproj" />
+    <ProjectReference Include="..\TaxiDispatcher.Client.Helper\TaxiDispatcher.Client.Helper.csproj" />
+    <ProjectReference Include="..\TaxiDispatcher.Client.Model\TaxiDispatcher.Client.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>

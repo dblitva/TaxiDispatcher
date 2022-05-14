@@ -75,4 +75,5 @@ app.UseExceptionHandler(c => c.Run(async context =>
 }));
 
 app.Run();
+public partial class Program { }
 

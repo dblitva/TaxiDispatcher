@@ -1,20 +1,18 @@
 ﻿using System.Net.Http.Json;
 using TaxiDispatcher.Client.Model.Response;
 
-namespace TaxiDispatcher.Client.RestComunication
+namespace TaxiDispatcher.Client.Helper
 {
     public static class HttpClientWrapper<T>
     {
-        public static async Task<ResponseWrapper<T>> PostData(Uri url, HttpContent stringContent)
+        public static async Task<ResponseWrapper<T>> PostData(HttpClient httpClient, Uri url, HttpContent stringContent)
         {
-            HttpClient httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.PostAsync(url, stringContent);
             return await ResponseProcessing(response);
         }
 
-        public static async Task<ResponseWrapper<T>> GetData(Uri url)
+        public static async Task<ResponseWrapper<T>> GetData(HttpClient httpClient, Uri url)
         {
-            HttpClient httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync(url);
             return await ResponseProcessing(response);
         }
@@ -34,7 +32,7 @@ namespace TaxiDispatcher.Client.RestComunication
                 var dic = new Dictionary<string, string[]>();
                 var msg = new List<string> { "Server Error!" };
                 dic.Add("Fatal", msg.ToArray());
-               
+
                 return new ResponseWrapper<T>
                 {
                     IsBadResponse = true,
