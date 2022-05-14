@@ -35,7 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Common", "Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.DataInitialization", "Common\TaxiDispatcher.DataInitialization\TaxiDispatcher.DataInitialization.csproj", "{84B8BB17-DC45-4359-8A8C-A7730121AD08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Client", "Client\TaxiDispatcher.Client\TaxiDispatcher.Client.csproj", "{1453B0C6-14D9-44B4-9ECE-FF397670B1F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Client", "Client\TaxiDispatcher.Client\TaxiDispatcher.Client.csproj", "{1453B0C6-14D9-44B4-9ECE-FF397670B1F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Test", "6.Test", "{B7EC7E09-21D1-4A53-A2B6-9FA7AB966E15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Tests.Unit.Repository", "Test\TaxiDispatcher.Tests.Unit.Repository\TaxiDispatcher.Tests.Unit.Repository.csproj", "{5293F10A-373C-45A8-A202-9C3233D34AB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +87,10 @@ Global
 		{1453B0C6-14D9-44B4-9ECE-FF397670B1F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1453B0C6-14D9-44B4-9ECE-FF397670B1F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1453B0C6-14D9-44B4-9ECE-FF397670B1F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5293F10A-373C-45A8-A202-9C3233D34AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5293F10A-373C-45A8-A202-9C3233D34AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5293F10A-373C-45A8-A202-9C3233D34AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5293F10A-373C-45A8-A202-9C3233D34AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +108,7 @@ Global
 		{A8DC9FF5-C7ED-4F74-8B83-900237DFCC0C} = {D8B27EF3-B3CA-4663-A3D5-19699D8B6A63}
 		{84B8BB17-DC45-4359-8A8C-A7730121AD08} = {D8B27EF3-B3CA-4663-A3D5-19699D8B6A63}
 		{1453B0C6-14D9-44B4-9ECE-FF397670B1F7} = {9DCC3791-CFEB-4640-80F2-2C30973819AC}
+		{5293F10A-373C-45A8-A202-9C3233D34AB2} = {B7EC7E09-21D1-4A53-A2B6-9FA7AB966E15}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B8CD771-9F0E-498B-94F1-615A97981616}

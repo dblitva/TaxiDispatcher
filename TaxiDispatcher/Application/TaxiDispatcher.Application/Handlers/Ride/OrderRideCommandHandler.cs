@@ -27,7 +27,6 @@ namespace TaxiDispatcher.Application.Handlers.Ride
 
                 Repository.Model.Ride ride = new Repository.Model.Ride
                 {
-                    Id = Guid.NewGuid().ToString(),
                     LocationFrom = request.LocationFrom,
                     LocationTo = request.LocationTo,
                     Taxi = bestTaxi,

@@ -24,9 +24,9 @@ namespace TaxiDispatcher.DataInitialization
 
         private void InitTaxiCompanyData()
         {
-            Repository.Model.TaxiCompany taxiCompany1 = new Repository.Model.TaxiCompany { Id = Guid.NewGuid().ToString(), Name = "Naxi", Rate = 10 };
-            Repository.Model.TaxiCompany taxiCompany2 = new Repository.Model.TaxiCompany { Id = Guid.NewGuid().ToString(), Name = "Alfa", Rate = 15 };
-            Repository.Model.TaxiCompany taxiCompany3 = new Repository.Model.TaxiCompany { Id = Guid.NewGuid().ToString(), Name = "Gold", Rate = 13 };
+            Repository.Model.TaxiCompany taxiCompany1 = new Repository.Model.TaxiCompany { Name = "Naxi", Rate = 10 };
+            Repository.Model.TaxiCompany taxiCompany2 = new Repository.Model.TaxiCompany { Name = "Alfa", Rate = 15 };
+            Repository.Model.TaxiCompany taxiCompany3 = new Repository.Model.TaxiCompany { Name = "Gold", Rate = 13 };
 
             _taxiCompanyRepository.Insert(taxiCompany1);
             _taxiCompanyRepository.Insert(taxiCompany2);
@@ -37,10 +37,10 @@ namespace TaxiDispatcher.DataInitialization
         {
 
 
-            Repository.Model.Taxi taxi1 = new Repository.Model.Taxi { Id = Guid.NewGuid().ToString(), Name = "Predrag", Location = 50, Company = _taxiCompanyRepository.GetByName("Naxi") };
-            Repository.Model.Taxi taxi2 = new Repository.Model.Taxi { Id = Guid.NewGuid().ToString(), Name = "Nenad", Location = 20, Company = _taxiCompanyRepository.GetByName("Naxi") };
-            Repository.Model.Taxi taxi3 = new Repository.Model.Taxi { Id = Guid.NewGuid().ToString(), Name = "Dragan", Location = 80, Company = _taxiCompanyRepository.GetByName("Alfa") };
-            Repository.Model.Taxi taxi4 = new Repository.Model.Taxi { Id = Guid.NewGuid().ToString(), Name = "Goran", Location = 5, Company = _taxiCompanyRepository.GetByName("Gold") };
+            Repository.Model.Taxi taxi1 = new Repository.Model.Taxi { Name = "Predrag", Location = 50, Company = _taxiCompanyRepository.GetByName("Naxi") };
+            Repository.Model.Taxi taxi2 = new Repository.Model.Taxi { Name = "Nenad", Location = 20, Company = _taxiCompanyRepository.GetByName("Naxi") };
+            Repository.Model.Taxi taxi3 = new Repository.Model.Taxi { Name = "Dragan", Location = 80, Company = _taxiCompanyRepository.GetByName("Alfa") };
+            Repository.Model.Taxi taxi4 = new Repository.Model.Taxi { Name = "Goran", Location = 5, Company = _taxiCompanyRepository.GetByName("Gold") };
 
             _taxiRepository.Insert(taxi1);
             _taxiRepository.Insert(taxi2);

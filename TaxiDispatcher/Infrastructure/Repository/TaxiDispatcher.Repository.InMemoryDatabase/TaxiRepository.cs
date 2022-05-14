@@ -18,6 +18,7 @@ namespace TaxiDispatcher.Repository.InMemoryDatabase
 
         public string Insert(Taxi taxi)
         {
+            taxi.Id = Guid.NewGuid().ToString();
             _inMemoryDatabaseContext.Taxis.Add(taxi);
             return taxi.Id;
         }
