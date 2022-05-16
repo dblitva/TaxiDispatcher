@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System.Text;
 using TaxiDispatcher.Client.Helper;
 using TaxiDispatcher.Client.Model.Request;
@@ -11,9 +12,9 @@ namespace TaxiDispatcher.Client.RestComunication
         private readonly string _path;
         private readonly HttpClient _httpClient;
 
-        public RestService()
+        public RestService(IConfiguration configuration)
         {
-            _path = "http://localhost:5180/";
+            _path = configuration.GetValue<string>("RestServiceUrl");
             _httpClient = new HttpClient();
         }
 
