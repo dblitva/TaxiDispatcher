@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a code refactor tech challenge created by the one company. A REST service has been created that is well covered by unit and integration tests and the client application that consumes it.
+This is a code refactor tech challenge created by the one company. Solution contains REST service and client console application. Project is covered by unit and integration tests.
 
 ## Tech stack
 
@@ -11,7 +11,7 @@ This is a code refactor tech challenge created by the one company. A REST servic
 
 ## Start
 
-### Visual Studio 2019
+### Visual Studio 2022
 - In Microsoft Visual Studio 2022 right click on **TaxiDispatcher.WebApi** and select **Debug --> Stat new Instance**.
 - In Microsoft Visual Studio 2022 right click on **TaxiDispatcher.Client** and select **Debug --> Stat new Instance**.
 
