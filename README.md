@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a code refactor tech challenge created by the one company. A REST service has been created that is well covered by unit and integration tests and the client application that consumes it.
+This is a code refactor tech challenge created by the one company. Solution contains REST service and client console application. Project is covered by unit and integration tests.
 
 ## Tech stack
 
