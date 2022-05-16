@@ -55,11 +55,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.PS_run", "7.PS_run", "{6F
 		PS_run\start-taxidispatcher-client.ps1 = PS_run\start-taxidispatcher-client.ps1
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A5B6D957-0DB3-4836-BF7C-A86478149F0B}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
