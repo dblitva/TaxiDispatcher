@@ -32,23 +32,28 @@ namespace TaxiDispatcher.Tests.Integration
             // Act
             var orderRideRequest = new OrderRideRequest { LocationFrom = locationFrom, LocationTo = locationTo, RideType = rideType, Time = time };
             var orderResponse = await OrderRide(orderRideRequest);
-            if (!badResponse && ordered)
+            if (!badResponse && ordered && orderResponse.Response != null && orderResponse.Response.Ride != null)
             {
                 await AcceptRide(new AcceptRideRequest { RideId = orderResponse.Response.Ride.Id });
             }
 
             // Assert
-            if (badResponse)
+            if (badResponse && orderResponse.ValidationResponse != null)
             {
-                Assert.Equal(orderResponse.ValidationResponse.status, 400);
+                Assert.Equal(400, orderResponse.ValidationResponse.status);
             }
-            else if (ordered)
+            else if (ordered && orderResponse.Response != null)
             {
                 Assert.Equal(orderResponse.Response.RideOrdered, ordered);
             }
-            else
+            else if (orderResponse.Response != null)
             {
                 Assert.Equal(orderResponse.Response.OrderCancelationReason, Common.Constants.Messages.TaxiNotAvailable);
+            }
+            else
+            {
+                Assert.Null(orderResponse.Response);
+                Assert.Null(orderResponse.ValidationResponse);
             }
         }
 
@@ -62,17 +67,24 @@ namespace TaxiDispatcher.Tests.Integration
             {
                 var orderRideRequest = new OrderRideRequest { LocationFrom = (int)data[0], LocationTo = (int)data[1], RideType = (int)data[2], Time = (DateTime)data[3] };
                 var orderResponse = await OrderRide(orderRideRequest);
-                if (!orderResponse.IsBadResponse && orderResponse.Response.RideOrdered)
+                if (!orderResponse.IsBadResponse && orderResponse.Response != null && orderResponse.Response.Ride != null && orderResponse.Response.RideOrdered)
                 {
                     await AcceptRide(new AcceptRideRequest { RideId = orderResponse.Response.Ride.Id });
                 }
             }
             var drivers = await GetRidesByDate(forDate);
 
-            Assert.Equal(drivers.Response.Count(), driverCount);
-            foreach (var driver in drivers.Response)
+            Assert.Equal(drivers.Response?.Count(), driverCount);
+            if (drivers.Response != null)
             {
-                Assert.Equal(driver.Rides.Count(), rideCount);
+                foreach (var driver in drivers.Response)
+                {
+                    Assert.Equal(driver.Rides?.Count(), rideCount);
+                }
+            }
+            else
+            {
+                Assert.Null(drivers.Response);
             }
         }
     }

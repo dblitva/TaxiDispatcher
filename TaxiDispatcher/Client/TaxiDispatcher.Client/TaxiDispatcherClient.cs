@@ -8,7 +8,8 @@ namespace TaxiDispatcher.Client
 {
     public class TaxiDispatcherClient
     {
-        private RestService _restService;
+        public RestService? _restService;
+
         public async Task Run(IServiceProvider services)
         {
             _restService = ActivatorUtilities.GetServiceOrCreateInstance<RestService>(services);
@@ -35,22 +36,22 @@ namespace TaxiDispatcher.Client
         {
             Console.WriteLine($"Ordering ride from {locationFrom} to {locationTo}...");
             var orderResponse = await OrderRide(locationFrom, locationTo, rideType, time);
-            if (!orderResponse.IsBadResponse)
+            if (orderResponse.Response != null &&  !orderResponse.IsBadResponse)
             {
-                if (orderResponse.Response.RideOrdered)
+                if (orderResponse.Response != null && orderResponse.Response.Ride != null && orderResponse.Response.RideOrdered)
                 {
                     Console.WriteLine("Ride ordered, price: " + orderResponse.Response.Ride.Price.ToString());
                     var ride = await _restService.AcceptRide(new AcceptRideRequest { RideId = orderResponse.Response.Ride.Id });
-                    Console.WriteLine(ride.Response.Message);
+                    Console.WriteLine(ride.Response?.Message);
                 }
                 else
                 {
-                    Console.WriteLine(orderResponse.Response.OrderCancelationReason);
+                    Console.WriteLine(orderResponse.Response?.OrderCancelationReason);
                 }
             }
             else
             {
-                Console.WriteLine(orderResponse.ValidationResponse.ErrorsToString());
+                Console.WriteLine(orderResponse.ValidationResponse?.ErrorsToString());
             }
         }
         public async Task<ResponseWrapper<OrderRideResponse>> OrderRide(int locationFrom, int locationTo, int rideType, DateTime time) 
@@ -69,14 +70,17 @@ namespace TaxiDispatcher.Client
         public async Task GetRideList()
         {
             var drivers = await _restService.GetRidesByDate(new DateTime(2022, 01, 01));
-            if(!drivers.IsBadResponse) 
+            if(!drivers.IsBadResponse && drivers.Response != null) 
             {
                 foreach (var driver in drivers.Response)
                 {
                     Console.WriteLine($"Driver {driver.DriverName} earned today:");
-                    foreach(var ride in driver.Rides)
+                    if (driver.Rides != null)
                     {
-                        Console.WriteLine($"Price: {ride.Price}");
+                        foreach (var ride in driver.Rides)
+                        {
+                            Console.WriteLine($"Price: {ride.Price}");
+                        }
                     }
                     Console.WriteLine($"Total: {driver.Total}");
                     Console.WriteLine(Environment.NewLine);
@@ -84,7 +88,7 @@ namespace TaxiDispatcher.Client
             }
             else
             {
-                Console.WriteLine(drivers.ValidationResponse.ErrorsToString());
+                Console.WriteLine(drivers.ValidationResponse?.ErrorsToString());
             }
         }
     }

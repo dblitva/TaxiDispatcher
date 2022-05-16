@@ -20,10 +20,10 @@ namespace TaxiDispatcher.Application.Handlers.Ride
         }
         public async Task<RideResponse> Handle(OrderRideCommand request, CancellationToken cancellationToken)
         {
-            var bestTaxi = await FindBestTaxi(request);
+            var bestTaxi = FindBestTaxi(request);
             if (Math.Abs(request.LocationFrom - bestTaxi.Location) < Constants.TaxiAvailability.Distance)
             {
-                var price = await CalculatePraice(request, bestTaxi);
+                var price = CalculatePraice(request, bestTaxi);
 
                 Repository.Model.Ride ride = new Repository.Model.Ride
                 {
@@ -44,7 +44,7 @@ namespace TaxiDispatcher.Application.Handlers.Ride
             return new RideResponse { RideOrdered = false, OrderCancelationReason = Constants.Messages.TaxiNotAvailable };
         }
 
-        private async Task<Repository.Model.Taxi> FindBestTaxi(OrderRideCommand request)
+        private Repository.Model.Taxi FindBestTaxi(OrderRideCommand request)
         {
             var taxis = _taxiRepository.GetAll();
             var orderdTaxisByLocation = taxis.OrderBy(x => Math.Abs(x.Location)).ToList();
@@ -66,7 +66,7 @@ namespace TaxiDispatcher.Application.Handlers.Ride
             }
         }
 
-        private async Task<int> CalculatePraice(OrderRideCommand request, Repository.Model.Taxi taxi)
+        private int CalculatePraice(OrderRideCommand request, Repository.Model.Taxi taxi)
         {
             var price = taxi.Company.Rate * Math.Abs(request.LocationFrom - request.LocationTo);
 

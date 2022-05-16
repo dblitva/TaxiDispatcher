@@ -2,6 +2,6 @@
 {
     public class AcceptRideRequest
     {
-        public string RideId { get; set; }
+        public string? RideId { get; set; }
     }
 }
